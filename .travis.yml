@@ -1,4 +1,10 @@
 language: ruby
+sudo: false
+cache: bundler
+services:
+  - mysql
+before_script:
+  - mysql -e 'create database ci_test;'
 rvm:
   - 1.9.3
   - 2.0.0

@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activerecord', '>= 4.2', '< 5.0'
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'mysql2'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'database_cleaner'

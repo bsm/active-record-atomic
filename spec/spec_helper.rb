@@ -13,8 +13,12 @@ RSpec.configure do |c|
 end
 
 tempfile = Tempfile.new ["atomic", "test"]
-
 ActiveRecord::Base.configurations["test"] = { 'adapter' => 'sqlite3', 'database' => tempfile.path, 'pool' => 20 }
+
+if ENV['CI']
+  ActiveRecord::Base.configurations["test"].update 'adapter' => 'mysql2', 'database' => 'ci_test', 'username' => 'travis', 'encoding' => 'utf8'
+end
+
 ActiveRecord::Base.establish_connection(:test)
 ActiveRecord::Base.connection.create_table :posts do |t|
   t.string :title
